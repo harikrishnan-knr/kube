@@ -6,6 +6,15 @@ pipeline {
         SERVICE_NAME = 'bbcnews'
     }
 
+    stages {
+        stage('Checkout for Kubernetes') {
+            agent {
+                label 'kube'
+            }
+            steps {
+                git branch: 'main', url: 'https://github.com/harikrishnan-knr/kube.git'
+            }
+        }
 
         stage('Kubernetes Version Check') {
             agent {
