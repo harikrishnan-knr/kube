@@ -2,29 +2,26 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: game 
+  name: bbc
   labels:
-    app: gamepod
-spec: 
+    app: bbc
+spec:
   containers:
-  - name: gamecontainer
-    image: harikrishnanknr/gameover-web:v1
-    ports:
-    - name: gameport 
-      containerPort: 80
+    - name: bbccontainer
+      image: harikrishnanknr/gameover-web:v1
+      ports:
+        - containerPort: 80
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: game
-  labels:
-    app: gameservice
-spec: 
-  containers:
-  - name: gameservice
-    image: harikrishnanknr/gameover-web:v1
-    ports:
-    - name: gameport 
-      containerPort: 80
-    Service type: Load balancer
+  name: bbcnews
+spec:
+  selector:
+    app: bbc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
