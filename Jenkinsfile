@@ -40,8 +40,7 @@ pipeline {
                 label 'kube'
             }
             steps {
-                sh '''kubectl delete pod ${POD_NAME} || true
-                kubectl apply -f ${POD_NAME}'''
+                sh 'kubectl apply -f ${POD_NAME}'
             }
         }
 
