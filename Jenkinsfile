@@ -40,7 +40,7 @@ pipeline {
                 label 'kube'
             }
             steps {
-                sh 'kubectl apply -f ${POD_NAME}'
+                sh 'kubectl apply -f ${KUBE_FILE}'
             }
         }
 
