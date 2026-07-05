@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         KUBE_FILE = 'service.yaml'
-        SERVICE_NAME = 'bbcnews'
+        POD_NAME = 'apple-pod'
     }
 
     stages {
@@ -40,8 +40,8 @@ pipeline {
                 label 'kube'
             }
             steps {
-                sh '''kubectl delete -f ${KUBE_FILE} || true
-                kubectl apply -f ${KUBE_FILE}'''
+                sh '''kubectl delete pod ${POD_NAME} || true
+                kubectl apply -f ${POD_NAME}'''
             }
         }
 
