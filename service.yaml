@@ -2,29 +2,29 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: apple-ip 
+  name: game 
   labels:
-    app: apple-pod
+    app: gamepod
 spec: 
   containers:
-  - name: applecontainer
+  - name: gamecontainer
     image: harikrishnanknr/gameover-web:v1
     ports:
-    - name: apple-ip 
+    - name: gameport 
       containerPort: 80
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: apple-ip 
+  name: game
   labels:
-    app: apple-pod
+    app: gameservice
 spec: 
   containers:
-  - name: appleservice
+  - name: gameservice
     image: harikrishnanknr/gameover-web:v1
     ports:
-    - name: apple-ip 
+    - name: gameport 
       containerPort: 80
     Service type: Load balancer
