@@ -1,5 +1,11 @@
 ---
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: bbcnews-ns
+
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: bbc
@@ -8,10 +14,10 @@ metadata:
 spec:
   containers:
     - name: bbccontainer
-      image: harikrishnanknr/gameover-web:v1
+      image: dockerharikrishnan/bbcnews
       ports:
         - containerPort: 80
-
+        
 ---
 apiVersion: v1
 kind: Service
